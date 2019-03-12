@@ -1,15 +1,35 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 
+import 'layout.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        title: 'Welcome to Flutter',
-        theme: ThemeData(primaryColor: Colors.blue),
-        home: RandomWords());
+    return MaterialApp(title: 'Welcome to Flutter', home: RandomWords());
+  }
+}
+
+class MyCustomLayoutWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        // Add from here...
+        appBar: AppBar(
+          title: Text('Startup Name Generator'),
+        ),
+        backgroundColor: Colors.lightBlue,
+        body: Container(
+            alignment: Alignment.center,
+            constraints: BoxConstraints.tight(Size(300, 300)),
+            decoration: BoxDecoration(color: Colors.yellow),
+            child: Container(
+              color: Colors.red,
+              width: 100,
+              height: 100,
+            )));
   }
 }
 
@@ -27,10 +47,20 @@ class RandomWordsState extends State<RandomWords> {
         actions: <Widget>[
           // Add 3 lines from here...
           IconButton(icon: const Icon(Icons.list), onPressed: _pushSaved),
+          IconButton(
+            icon: const Icon(Icons.navigation),
+            onPressed: _navSaved,
+          )
         ],
       ),
       body: _buildSuggestions(),
     );
+  }
+
+  void _navSaved() {
+    Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) {
+      return MyApp1().buildNavDetail(context);
+    }));
   }
 
   void _pushSaved() {
