@@ -8,28 +8,43 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(title: 'Welcome to Flutter', home: RandomWords());
+    return MaterialApp(
+        title: 'Welcome to Flutter',
+        debugShowCheckedModeBanner: false,
+        home: Container(child: StateDemoWidget()));
   }
 }
 
-class MyCustomLayoutWidget extends StatelessWidget {
+class StateDemoWidget extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => _StateDemoWidgetState();
+}
+
+class _StateDemoWidgetState extends State<StateDemoWidget> {
+  String text = 'App Launched, Click to change';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // Add from here...
         appBar: AppBar(
-          title: Text('Startup Name Generator'),
+          title: Text('State Management'),
         ),
-        backgroundColor: Colors.lightBlue,
-        body: Container(
-            alignment: Alignment.center,
-            constraints: BoxConstraints.tight(Size(300, 300)),
-            decoration: BoxDecoration(color: Colors.yellow),
-            child: Container(
-              color: Colors.red,
-              width: 100,
-              height: 100,
-            )));
+        body: Builder(
+          builder: (BuildContext context) {
+            final widget = GestureDetector(
+              onTap: () {
+                setState(() {
+                  text = 'App Updated';
+                });
+              },
+              child: Center(child: Text(text)),
+            );
+
+            print('Building Widget [${widget.hashCode}] for State [$this]');
+
+            return widget;
+          },
+        ));
   }
 }
 

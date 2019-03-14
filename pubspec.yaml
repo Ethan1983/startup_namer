@@ -48,6 +48,21 @@ flutter:
 
   assets:
      - images/lake.jpg
+     - images/insta0.jpg
+     - images/insta1.jpg
+     - images/insta2.jpg
+     - images/insta3.jpg
+     - images/insta4.jpg
+     - images/insta5.jpg
+     - images/insta6.jpg
+     - images/insta7.jpg
+     - images/insta8.jpg
+     - images/insta9.jpg
+     - images/insta10.jpg
+     - images/insta11.jpg
+     - images/insta12.jpg
+     - images/insta13.jpg
+     - images/insta14.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
